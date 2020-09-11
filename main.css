@@ -43,7 +43,7 @@ img {
   padding: .5em 1.5em;
 }
 
-.icon::before {
+.icon-views::before {
   font-family: "Font Awesome 5 Free";
   display: inline-block;
   font-weight: 900;
@@ -72,6 +72,68 @@ img {
   border-radius: 50%;
 }
 
+.streamer .icon {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  position: relative;
+  -webkit-transition: -webkit-transform ease-in-out 150ms;
+  transition: -webkit-transform ease-in-out 150ms;
+  transition: transform ease-in-out 150ms;
+  transition: transform ease-in-out 150ms, -webkit-transform ease-in-out 150ms;
+}
+
+.streamer:hover .icon {
+  -webkit-transform: translateY(-20%);
+          transform: translateY(-20%);
+}
+
+.streamer .icon:hover {
+  -webkit-transform: translateY(-20%) scale(1.1);
+          transform: translateY(-20%) scale(1.1);
+}
+
+.streamer:hover .icon::before {
+  opacity: 1;
+}
+
+.icon::before,
+.icon::after {
+  opacity: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+}
+
+.icon::before {
+  content: "\f04b";
+  background: red;
+  z-index: 10;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: .65em;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  -webkit-transition: opacity 75ms linear, background-color 100ms linear;
+  transition: opacity 75ms linear, background-color 100ms linear;
+}
+
+.icon:hover::before {
+  background: #e00000;
+}
+
+.icon:hover::after {
+  background: red;
+  z-index: 1;
+  -webkit-animation: pulse 1250ms infinite;
+          animation: pulse 1250ms infinite;
+}
+
 .rank {
   font-weight: bold;
   position: absolute;
@@ -81,7 +143,7 @@ img {
   font-weight: bold;
   font-size: 1.125rem;
   background: rgba(0, 0, 0, 0.5);
-  padding: .5em .5em .75em;
+  padding: 0.5em 0.5em 0.75em;
   -webkit-clip-path: polygon(100% 0%, 100% 100%, 50% 80%, 0 100%, 0 0, 49% 0);
           clip-path: polygon(100% 0%, 100% 100%, 50% 80%, 0 100%, 0 0, 49% 0);
   -webkit-transition: var(--transition);
@@ -123,7 +185,7 @@ img {
 }
 
 .front .viewers::before {
-  font-size: 0.85em;
+  font-size: 0.75em;
   color: rgba(255, 255, 255, 0.5);
   margin-right: 0.5em;
   content: "\f007";
@@ -178,7 +240,7 @@ img {
 }
 
 .back .game-stat span {
-  font-size: .85rem;
+  font-size: 0.85rem;
   display: block;
 }
 
@@ -194,6 +256,7 @@ img {
           transform: scale(0.2, 0.9);
   opacity: 0;
   border-radius: var(--br);
+  overflow: hidden;
 }
 
 .game:hover .rank {
@@ -283,6 +346,32 @@ img {
   100% {
     text-align: center;
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    opacity: .75;
+  }
+  100% {
+    -webkit-transform: scale(1.35);
+            transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    opacity: .75;
+  }
+  100% {
+    -webkit-transform: scale(1.35);
+            transform: scale(1.35);
+    opacity: 0;
   }
 }
 /*# sourceMappingURL=main.css.map */
